@@ -1,3 +1,4 @@
+const dotenv = require('dotenv').config();
 const express = require('express');
 const session = require('express-session');
 const bodyParser = require('body-parser');
@@ -7,33 +8,32 @@ const path = require('path');
 
 const app = express();
 
-// App constants
+// App config
 app.set('port', process.env.PORT || 8080);
-app.set('enviroment', process.env.NODE_ENV || 'development');
 app.set('views', path.join(__dirname, 'views'));
+app.set('static', path.join(__dirname, 'public'));
 app.set('view engine', 'html');
-app.set('session secret', process.env.SESSION_SECRET || 'secret');
-app.set('session name', process.env.SESSION_NAME || 'flipper');
 
 // App middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use('static', express.static(app.get('static')));
+app.use(morgan(app.get('env') == 'production' ? 'common' : 'dev'));
 app.use(
   session({
-    name: app.get('session name'),
-    secret: app.get('session secret'),
+    name: process.env.SESSION_NAME,
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
     cookie: {
-      secure: app.get('enviroment') == 'production',
+      secure: app.get('env') === 'production',
       maxAge: 1000 * 60 * 60 * 24 * 7,
     },
   })
 );
-app.use(morgan(app.get('enviroment') == 'production' ? 'common' : 'dev'));
 
 // App view engine
-nunjucks.configure(app.get('view engine'), {
+nunjucks.configure(app.get('views'), {
   autoescape: true,
   express: app,
 });
