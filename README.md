@@ -40,7 +40,9 @@ DATABASE_URL="file:./app.db"
 SESSION_NAME="appName"
 SESSION_SECRET="secret"
 ```
+
 Prisma needs one command to be fully functional ([Prisma Docs](https://www.prisma.io/docs)).
+
 ```bash
 npx prisma migrate dev --name init --preview-feature
 ```
