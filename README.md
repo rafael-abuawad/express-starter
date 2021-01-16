@@ -1,7 +1,6 @@
 # Express App Template
 
-This template is aimed at projects that only need a basic front-end and a basic back-end (**No front-end frameworks, No RESTful API endpoints, No JsonWebTokens**).
-Basic, but useful Express JS starter app template. This template includes express, express-session, morgan, nunjucks as the templating engine, prettier as the formater, and Prisma as the ORM.
+Basic, but useful Express JS starter app template to build RESTful APIs. This template includes express, morgan, prettier as the formater, and Prisma 2 as the ORM. 
 
 ## Contains
 
