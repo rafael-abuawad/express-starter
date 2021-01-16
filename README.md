@@ -7,13 +7,10 @@ Basic, but useful Express JS starter app template. This template includes expres
 
 - Useful packages:
   - Express
-  - Express session
   - Morgan
   - Body parser
 - ORM:
   - [Prisma 2](https://www.prisma.io)
-- View engine:
-  - [Nunjucks](https://mozilla.github.io/nunjucks/)
 - Development packages:
   - Nodemon
 
